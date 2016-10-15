@@ -4,5 +4,11 @@
   "description": "React, Redux, Immutable, redux-observable flux challenge",
   "main": "index.js",
   "author": "Ian Sinnott",
-  "license": "MIT"
+  "license": "MIT",
+  "scripts": {
+    "start": "node devServer.js"
+  },
+  "devDependencies": {
+    "webpack": "^1.13.2"
+  }
 }

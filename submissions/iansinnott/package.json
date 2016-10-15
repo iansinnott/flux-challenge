@@ -1,0 +1,8 @@
+{
+  "name": "iansinnott",
+  "version": "1.0.0",
+  "description": "React, Redux, Immutable, redux-observable flux challenge",
+  "main": "index.js",
+  "author": "Ian Sinnott",
+  "license": "MIT"
+}

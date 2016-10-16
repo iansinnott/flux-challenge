@@ -1,3 +1,4 @@
+const webpack = require('webpack');
 const path = require('path');
 const HTMLWebpackPlugin = require('html-webpack-plugin');
 
@@ -23,10 +24,19 @@ module.exports = {
         loaders: ['babel'],
         include: path.join(__dirname, 'src'),
       },
+      {
+        test: /\.css$/,
+        loaders: ['style', 'css'],
+      },
     ],
   },
 
   plugins: [
+    new webpack.DefinePlugin({
+      'process.env': {
+        NODE_ENV: JSON.stringify('production'),
+      },
+    }),
     new HTMLWebpackPlugin({
       template: './src/index.html',
     }),

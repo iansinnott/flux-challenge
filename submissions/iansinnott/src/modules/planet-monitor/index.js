@@ -2,12 +2,12 @@
 import { Map } from 'immutable';
 import type { Action } from 'redux';
 import type { Epic } from 'redux-observable';
+import { createWebSocketObservable } from '../../lib/utils.js';
 
 const prefix = str => `flux-challenge/planet-monitor/${str}`;
 
 /* Action Types
  * ======================================================================= */
-const INIT = prefix('INIT');
 const MESSAGE_RECEIVED = prefix('MESSAGE_RECEIVED');
 
 /* Actions
@@ -19,10 +19,17 @@ export const messageReceived = (payload: any): Action => ({
 
 /* Epics
  * ======================================================================= */
-export const incomingMessageEpic: Epic<Action> = (action$) =>
-  action$.ofType(INIT)
-    .delay(600)
-    .mapTo({ type: 'messages initialized' });
+
+/**
+ * Connect to planet monitor websocket and dispatch all incoming updates.
+ *
+ * NOTE: Epics need not use the passed action stream. They just need to
+ * return an action stream.
+ */
+export const incomingMessageEpic: Epic<Action> = () =>
+  createWebSocketObservable('ws://localhost:4000')
+    .map(msg => JSON.parse(msg.data.toString()))
+    .map(messageReceived);
 
 /* Reducers
  * ======================================================================= */

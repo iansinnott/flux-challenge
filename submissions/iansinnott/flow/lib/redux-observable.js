@@ -4,4 +4,5 @@ declare module 'redux-observable' {
     ofType(type: string): rxjs$Observable<T>;
   }
   declare type Epic<T> = (action$: ActionsObservable<T>) => rxjs$Observable<T>;
+  declare function combineEpics<T>(...epics: Epic<T>[]): Epic<T>;
 }

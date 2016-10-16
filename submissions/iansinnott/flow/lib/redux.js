@@ -1,5 +1,3 @@
-declare type redux$Action = Object & { type: string }; // Custom. Not standard redux
-
 declare module 'redux' {
   declare type State = any;
   declare type Action = Object & { type: string }; // Custom. Not standard redux

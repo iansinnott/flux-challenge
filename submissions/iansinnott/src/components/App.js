@@ -8,7 +8,7 @@ export default class App extends React.Component {
   render() {
     return (
       <div className={cx('App')}>
-        <h1>Super app</h1>
+        <h1>Hey there app</h1>
       </div>
     );
   }

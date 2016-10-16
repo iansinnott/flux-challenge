@@ -1,3 +1,4 @@
+const webpack = require('webpack');
 const path = require('path');
 const HTMLWebpackPlugin = require('html-webpack-plugin');
 
@@ -10,7 +11,6 @@ const HTMLWebpackPlugin = require('html-webpack-plugin');
 module.exports = {
   entry: {
     app: [
-      'webpack-dev-server/client?http://localhost:8080/',
       './src/index.js',
     ],
   },
@@ -31,6 +31,8 @@ module.exports = {
   },
 
   plugins: [
+    new webpack.HotModuleReplacementPlugin(),
+    new webpack.NoErrorsPlugin(),
     new HTMLWebpackPlugin({
       template: './src/index.html',
     }),

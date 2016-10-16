@@ -1,12 +1,7 @@
 /* @flow */
 import { createStore } from 'redux';
-import { combineReducers } from 'redux-immutable';
 
-import planetMonitor from '../modules/planet-monitor';
-
-const reducer = combineReducers({
-  planetMonitor,
-});
+import { reducer } from '../modules/root.js';
 
 const store = createStore(reducer);
 

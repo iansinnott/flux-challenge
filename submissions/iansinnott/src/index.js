@@ -5,7 +5,9 @@ import { Provider } from 'react-redux';
 // import 'rxjs'; // Import all Rx operators
 
 import App from './components/App.js';
-import store from './redux/store.js';
+import configureStore from './redux/configureStore.js';
+
+const store = configureStore();
 
 render(
   <Provider store={store}>

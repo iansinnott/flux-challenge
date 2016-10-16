@@ -15,4 +15,4 @@ const mapStateToProps = (state) => ({
   planetName: state.getIn(['planetMonitor', 'planetName']),
 });
 
-export default connect()(PlanetMonitor);
+export default connect(mapStateToProps)(PlanetMonitor);

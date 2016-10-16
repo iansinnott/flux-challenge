@@ -1,17 +1,26 @@
 /* @flow */
 import { Map } from 'immutable';
 import type { Action } from 'redux';
+import type { Observable } from 'rxjs';
+import type { Epic, ActionsObservable } from 'redux-observable';
 
 /* Action Types
  * ======================================================================= */
-const UPDATE_RECEIVED = `flux-challenge/planet-monitor/UPDATE_RECEIVED`;
+const MESSAGE_RECEIVED = `flux-challenge/planet-monitor/MESSAGE_RECEIVED`;
 
 /* Actions
  * ======================================================================= */
 export const messageReceived = (payload: any): Action => ({
-  type: UPDATE_RECEIVED,
+  type: MESSAGE_RECEIVED,
   payload,
 });
+
+/* Epics
+ * ======================================================================= */
+export const messageEpic: Epic = (action$) =>
+  action$.ofType(MESSAGE_RECEIVED)
+    .delay(600)
+    .mapTo({ type: 'message received' });
 
 /* Reducers
  * ======================================================================= */
@@ -23,7 +32,7 @@ const initialState = Map({
 export default function reducer(state: Map<string, *> = initialState, action: Action) {
   const { type, payload } = action;
   switch (type) {
-  case UPDATE_RECEIVED:
+  case MESSAGE_RECEIVED:
     return state.merge(payload);
   default:
     return state;

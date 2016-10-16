@@ -1,7 +1,8 @@
-/* @flow */
+declare type redux$Action = Object & { type: string }; // Custom. Not standard redux
+
 declare module 'redux' {
   declare type State = any;
-  declare type Action = { type: string, payload: any }; // Custom. Not true of standard Redux
+  declare type Action = Object & { type: string }; // Custom. Not standard redux
   declare type AsyncAction = any;
   declare type Reducer<S, A> = (state: S, action: A) => S;
   declare type BaseDispatch = (a: Action) => Action;

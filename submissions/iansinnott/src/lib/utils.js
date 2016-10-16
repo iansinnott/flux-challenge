@@ -1,7 +1,8 @@
 /* @flow */
-import { Observable } from 'rxjs/Rx';
+import { Observable } from 'rxjs';
 
 export const createWebSocketObservable = (url: string) => {
+  console.warn(`createWebSocketObservable('${url}') called`);
   return Observable.create((observer) => {
     const ws = new WebSocket(url);
 

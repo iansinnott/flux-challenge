@@ -18,7 +18,7 @@ class PlanetMonitor extends React.Component {
   componentDidMount() {
     // Create a websocket connection
     const message$ = createWebSocketObservable('ws://localhost:4000')
-      .map(msg => JSON.parse(msg.data))
+      .map(msg => JSON.parse(msg.data.toString()))
       .do(msg => console.log(msg))
       .subscribe(
         (msg) => this.props.dispatch(messageReceived(msg)),

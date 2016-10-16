@@ -17,7 +17,7 @@ export const messageReceived = (payload: any): Action => ({
 
 /* Epics
  * ======================================================================= */
-export const messageEpic: Epic = (action$) =>
+export const messageEpic: Epic<Action> = (action$) =>
   action$.ofType(MESSAGE_RECEIVED)
     .delay(600)
     .mapTo({ type: 'message received' });

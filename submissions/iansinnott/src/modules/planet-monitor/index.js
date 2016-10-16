@@ -8,7 +8,7 @@ const UPDATE_RECEIVED = `flux-challenge/planet-monitor/UPDATE_RECEIVED`;
 
 /* Actions
  * ======================================================================= */
-export const updateReceived = (payload: any): Action => ({
+export const messageReceived = (payload: any): Action => ({
   type: UPDATE_RECEIVED,
   payload,
 });
@@ -16,7 +16,8 @@ export const updateReceived = (payload: any): Action => ({
 /* Reducers
  * ======================================================================= */
 const initialState = Map({
-  planetName: '',
+  id: null,
+  name: '',
 });
 
 export default function reducer(state: Map<string, *> = initialState, action: Action) {

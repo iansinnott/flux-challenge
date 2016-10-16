@@ -3,9 +3,12 @@ import { Map } from 'immutable';
 import type { Action } from 'redux';
 import type { Epic } from 'redux-observable';
 
+const prefix = str => `flux-challenge/planet-monitor/${str}`;
+
 /* Action Types
  * ======================================================================= */
-const MESSAGE_RECEIVED = 'flux-challenge/planet-monitor/MESSAGE_RECEIVED';
+const INIT = prefix('INIT');
+const MESSAGE_RECEIVED = prefix('MESSAGE_RECEIVED');
 
 /* Actions
  * ======================================================================= */
@@ -17,9 +20,9 @@ export const messageReceived = (payload: any): Action => ({
 /* Epics
  * ======================================================================= */
 export const incomingMessageEpic: Epic<Action> = (action$) =>
-  action$.ofType(MESSAGE_RECEIVED)
+  action$.ofType(INIT)
     .delay(600)
-    .mapTo({ type: 'message received' });
+    .mapTo({ type: 'messages initialized' });
 
 /* Reducers
  * ======================================================================= */

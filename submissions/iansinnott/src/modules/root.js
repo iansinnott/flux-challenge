@@ -11,7 +11,3 @@ export const epic = combineEpics(
 export const reducer = combineReducers({
   planetMonitor,
 });
-
-
-
-

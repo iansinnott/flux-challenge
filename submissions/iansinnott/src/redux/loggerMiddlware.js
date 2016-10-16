@@ -1,13 +1,14 @@
 /* @flow */
-import type { Store } from 'redux';
+/* eslint-disable flowtype/require-parameter-type */
+import type { Middleware } from 'redux';
 
-export default function loggerMiddleware(store: Store) {
-  return (next: Function) => (action: Object) => {
-    console.group(action.type);
-    console.info('dispatching', action);
-    const result = next(action);
-    console.log('next state -> Map', store.getState().toJS());
-    console.groupEnd(action.type);
-    return result;
-  };
-}
+const loggerMiddleware: Middleware = (store) => (next) => (action) => {
+  console.group(action.type);
+  console.info('dispatching', action);
+  const result = next(action);
+  console.log('next state -> Map', store.getState().toJS());
+  console.groupEnd(action.type);
+  return result;
+};
+
+export default loggerMiddleware;

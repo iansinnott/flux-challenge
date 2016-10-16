@@ -1,12 +1,11 @@
 /* @flow */
 import { Map } from 'immutable';
 import type { Action } from 'redux';
-import type { Observable } from 'rxjs';
-import type { Epic, ActionsObservable } from 'redux-observable';
+import type { Epic } from 'redux-observable';
 
 /* Action Types
  * ======================================================================= */
-const MESSAGE_RECEIVED = `flux-challenge/planet-monitor/MESSAGE_RECEIVED`;
+const MESSAGE_RECEIVED = 'flux-challenge/planet-monitor/MESSAGE_RECEIVED';
 
 /* Actions
  * ======================================================================= */
